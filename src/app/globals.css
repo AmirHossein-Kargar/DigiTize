@@ -3,6 +3,30 @@
 @theme {
   --font-yekan: "YekanBakh-Regular", sans-serif;
   --font-yekan-bold: "YekanBakh-Bold", sans-serif;
+
+  /* ? Colors */
+   --color-brand-orange-700: #DE3618;
+  --color-brand-orange-600: #FC5858;
+  --color-brand-orange-500: #F25E57;
+  --color-brand-orange-400: #FF755C;
+  --color-brand-orange-300: #FF9F8E;
+  --color-brand-orange-100: #FFCBCB;
+
+  --color-brand-slate-900: #161D25;
+  --color-brand-slate-800: #222F5D;
+  --color-brand-slate-700: #606060;
+
+  --color-brand-stone-100: #F4F4F4;
+  --color-brand-stone-50: #FDFDFD;
+
+  --color-brand-gray-300: #AFAFAF;
+  --color-brand-gray-200: #EBEBEB;
+  --color-brand-slate-200: #E2E2E2;
+
+  --color-brand-indigo-600: #8750FB;
+  --color-brand-yellow-400: #FFDE74;
+
+  --color-brand-gray-300-30: rgba(175, 175, 175, 0.3);
 }
 
 @layer base {

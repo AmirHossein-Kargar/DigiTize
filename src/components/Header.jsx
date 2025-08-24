@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="relative flex items-center justify-between mt-11 mb-5 w-full h-[42px]">
+    <div className="relative flex items-center justify-between mt-11 mb-5 w-full h-[42px] md:hidden">
       <div>
         <svg
           width="50"
@@ -20,7 +20,7 @@ export default function Header() {
         </svg>
       </div>
 
-      <h1 className="absolute left-1/2 -translate-x-1/2 text-slate-800 text-2xl">
+      <h1 className="absolute left-1/2 -translate-x-1/2 text-2xl">
         ساعت هوشمند
       </h1>
 

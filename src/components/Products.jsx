@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { SortBar } from "./Filters";
 
 const products = [
   {
@@ -24,6 +26,30 @@ const products = [
     category: "ال‌جی",
     price: "۱۸،۷۰۰،۰۰۰",
   },
+  {
+    id: 7,
+    title: "تبلت آیپد پرو ۱۲.۹ اینچ",
+    category: "اپل",
+    price: "۷۵،۰۰۰،۰۰۰",
+  },
+  {
+    id: 8,
+    title: "هدفون سونی WH-1000XM4",
+    category: "سونی",
+    price: "۲۱،۵۰۰،۰۰۰",
+  },
+  {
+    id: 9,
+    title: "گوشی شیائومی Mi 11",
+    category: "شیائومی",
+    price: "۲۷،۳۰۰،۰۰۰",
+  },
+  {
+    id: 10,
+    title: "تلویزیون سامسونگ 55 اینچ",
+    category: "سامسونگ",
+    price: "۴۵،۰۰۰،۰۰۰",
+  },
 ];
 
 const colorOptions = ["bg-red-400", "bg-blue-400", "bg-green-400"];
@@ -40,18 +66,24 @@ export default function Products() {
 
       <div className="flex-1">
         <div className="mx-auto">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="hidden md:block col-span-full bg-white p-4 rounded-xl">
-              Sort Section
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <div className="hidden md:block col-span-full  mb-11">
+              <div className="bg-white px-4 rounded-lg flex items-center gap-x-4 text-brand-gray-300">
+                <SortBar />
+                <button className="py-2 cursor-pointer">محبوب ترین محصول</button>
+                <button className="py-2 cursor-pointer">پر بازدید ترین محصول</button>
+                <button className="py-2 cursor-pointer">گران ترین محصول</button>
+                <button className="py-2 cursor-pointer">ارزان ترین محصول</button>
+              </div>
             </div>
 
             {products.map((product) => (
               <div
                 key={product.id}
-                className="bg-white w-full h-80 rounded-xl p-1.5 shadow-lg"
+                className="bg-white w-full h-full rounded-xl p-1.5 shadow-lg"
               >
                 {/* Product Image */}
-                <div className="bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
+                <div className=" relative bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
                   <div className="relative w-16 h-28">
                     <Image
                       src="/images/Cart/AppleWatch.png"
@@ -59,6 +91,23 @@ export default function Products() {
                       fill
                       className="object-contain"
                     />
+                  </div>
+                  <div className="w-8 h-8 bg-brand-gray-300 rounded-full absolute top-2 right-2">
+                    <svg
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 18 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M9.21581 4.59197C10.4936 3.39447 12.5654 3.39447 13.8432 4.59197C15.1211 5.78954 15.1211 7.73123 13.8432 8.9288L9.18566 13.2935C9.05107 13.4196 8.8329 13.4196 8.6983 13.2935L4.04077 8.9288C2.76286 7.73123 2.76286 5.78954 4.04077 4.59197C5.3186 3.39447 7.39033 3.39447 8.66816 4.59197L8.94198 4.84858L9.21581 4.59197Z"
+                        fill="#FC5858"
+                      />
+                    </svg>
                   </div>
                 </div>
 
@@ -84,7 +133,7 @@ export default function Products() {
                           {isSelected && (
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
+                              fillRule="none"
                               viewBox="0 0 24 24"
                               strokeWidth={2}
                               stroke="white"
@@ -104,7 +153,13 @@ export default function Products() {
                 </div>
 
                 {/* Product Title */}
-                <h3 className="text-sm font-bold mb-2">{product.title}</h3>
+
+                <Link
+                  href="/"
+                  className="text-sm font-bold mb-2 cursor-pointer"
+                >
+                  {product.title}
+                </Link>
 
                 {/* Price */}
                 <div className="flex justify-end gap-1 text-brand-orange-700 mb-3.5">

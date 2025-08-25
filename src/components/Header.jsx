@@ -20,7 +20,7 @@ export default function Header() {
         </svg>
       </div>
 
-      <h1 className="absolute left-1/2 -translate-x-1/2 text-2xl">
+      <h1 className="absolute left-1/2 -translate-x-1/2 text-2xl max-xs:text-lg">
         ساعت هوشمند
       </h1>
 

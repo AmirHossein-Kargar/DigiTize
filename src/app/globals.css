@@ -3,6 +3,7 @@
 @theme {
   --font-yekan: "YekanBakh-Regular", sans-serif;
   --font-yekan-bold: "YekanBakh-Bold", sans-serif;
+   --breakpoint-xs: 425px;
 
   /* ? Colors */
    --color-brand-orange-700: #DE3618;

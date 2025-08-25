@@ -1,6 +1,6 @@
 export default function Filters() {
   return (
-    <div className="flex justify-between items-center gap-x-2 mb-11 md:hidden">
+    <div className="flex justify-evenly  items-center gap-x-2 mb-11 md:hidden">
       <section className="bg-white h-11 w-48 rounded-sm flex items-center px-2 justify-center gap-2">
         <div className="flex items-center">
           <div>
@@ -53,7 +53,7 @@ export default function Filters() {
           </div>
         </div>
         <div>
-          <span className="text-sm text-brand-slate-800">محبوب ترین محصول</span>
+          <span className="text-sm text-brand-slate-800 max-xs:text-xs font-bold">محبوب ترین محصول</span>
         </div>
       </section>
 
@@ -83,7 +83,7 @@ export default function Filters() {
             strokeLinejoin="round"
           />
         </svg>
-        <span className="text-sm text-brand-slate-800 text-center flex-1">
+        <span className="text-sm text-brand-slate-800 text-center flex-1 max-xs:text-xs font-bold">
           فیلتر : برند اپل
         </span>
       </section>

@@ -67,14 +67,8 @@ export default function Products() {
       <div className="flex-1">
         <div className="mx-auto">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            <div className="hidden md:block col-span-full  mb-11">
-              <div className="bg-white px-4 rounded-lg flex items-center gap-x-4 text-brand-gray-300">
-                <SortBar />
-                <button className="py-2 cursor-pointer">محبوب ترین محصول</button>
-                <button className="py-2 cursor-pointer">پر بازدید ترین محصول</button>
-                <button className="py-2 cursor-pointer">گران ترین محصول</button>
-                <button className="py-2 cursor-pointer">ارزان ترین محصول</button>
-              </div>
+            <div className="hidden md:block col-span-full mb-11">
+            <SortButtons />
             </div>
 
             {products.map((product) => (
@@ -179,4 +173,20 @@ export default function Products() {
       </div>
     </div>
   );
+}
+
+export function SortButtons() {
+  const [selected, setSelected] = useState("")
+  return (
+    <div className="bg-white px-4 py-2 rounded-lg flex items-center gap-x-4 text-brand-gray-300 ">
+    <div className="rounded-lg bg-brand-orange-100 w-10 h-10 flex justify-center cursor-pointer">
+    <SortBar />
+
+    </div>
+    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "popular" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("popular")}>محبوب ترین محصول</button>
+    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "visited" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("visited")}>پر بازدید ترین محصول</button>
+    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "expensive" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("expensive")}>گران ترین محصول</button>
+    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "cheap" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("cheap")}>ارزان ترین محصول</button>
+  </div>
+  )
 }

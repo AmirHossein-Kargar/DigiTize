@@ -3,31 +3,38 @@
 @theme {
   --font-yekan: "YekanBakh-Regular", sans-serif;
   --font-yekan-bold: "YekanBakh-Bold", sans-serif;
-   --breakpoint-xs: 425px;
+  --breakpoint-xs: 425px;
 
   /* ? Colors */
-   --color-brand-orange-700: #DE3618;
-  --color-brand-orange-600: #FC5858;
-  --color-brand-orange-500: #F25E57;
-  --color-brand-orange-400: #FF755C;
-  --color-brand-orange-300: #FF9F8E;
-  --color-brand-orange-100: #FFCBCB;
+  --color-brand-orange-700: #de3618;
+  --color-brand-orange-600: #fc5858;
+  --color-brand-orange-500: #f25e57;
+  --color-brand-orange-400: #ff755c;
+  --color-brand-orange-300: #ff9f8e;
+  --color-brand-orange-100: #ffcbcb;
 
-  --color-brand-slate-900: #161D25;
-  --color-brand-slate-800: #222F5D;
+  --color-brand-slate-900: #161d25;
+  --color-brand-slate-800: #222f5d;
   --color-brand-slate-700: #606060;
 
-  --color-brand-stone-100: #F4F4F4;
-  --color-brand-stone-50: #FDFDFD;
+  --color-brand-stone-100: #f4f4f4;
+  --color-brand-stone-50: #fdfdfd;
 
-  --color-brand-gray-300: #AFAFAF;
-  --color-brand-gray-200: #EBEBEB;
-  --color-brand-slate-200: #E2E2E2;
+  --color-brand-gray-300: #afafaf;
+  --color-brand-gray-200: #ebebeb;
+  --color-brand-slate-200: #e2e2e2;
 
-  --color-brand-indigo-600: #8750FB;
-  --color-brand-yellow-400: #FFDE74;
+  --color-brand-indigo-600: #8750fb;
+  --color-brand-yellow-400: #ffde74;
 
   --color-brand-gray-300-30: rgba(175, 175, 175, 0.3);
+
+  /* ? Hover Effects */
+  --hover-transition: all 0.2s ease-in-out;
+  --hover-scale: 1.05;
+  --hover-bg-light: #f8f8f8;
+  --hover-text-primary: var(--color-brand-slate-800);
+  --hover-text-accent: var(--color-brand-orange-500);
 }
 
 @layer base {
@@ -36,7 +43,51 @@
   }
   h1 {
     font-family: var(--font-yekan-bold);
-    color : var(--color-brand-slate-800)
+    color: var(--color-brand-slate-800);
+  }
+}
+
+@layer utilities {
+  /* Hover Effects */
+  .hover-primary {
+    transition: var(--hover-transition);
+  }
+
+  .hover-primary:hover {
+    color: var(--hover-text-primary);
+  }
+
+  .hover-accent {
+    transition: var(--hover-transition);
+  }
+
+  .hover-accent:hover {
+    color: var(--hover-text-accent);
+  }
+
+  .hover-bg {
+    transition: var(--hover-transition);
+  }
+
+  .hover-bg:hover {
+    background-color: var(--hover-bg-light);
+  }
+
+  .hover-scale {
+    transition: var(--hover-transition);
+  }
+
+  .hover-scale:hover {
+    transform: scale(var(--hover-scale));
+  }
+
+  .hover-button {
+    transition: var(--hover-transition);
+  }
+
+  .hover-button:hover {
+    background-color: var(--hover-bg-light);
+    color: var(--hover-text-primary);
   }
 }
 

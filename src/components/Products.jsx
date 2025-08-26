@@ -2,121 +2,165 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { SortBar } from "./Filters";
+import { SortButtons } from "./SortButtons";
 import SideBar from "./SideBar";
 
 const products = [
   {
     id: 1,
     title: "ساعت هوشمند اپل سری 6",
-    category: "اپل",
-    price: "۴۸،۲۵۰،۰۰۰",
+    category: "smartwatch",
+    categoryLabel: "ساعت هوشمند",
+    brand: "Apple",
+    price: 48250000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 2,
     title: "ایرپاد پرو ۲",
-    category: "اپل",
-    price: "۱۶،۵۰۰،۰۰۰",
+    category: "accessory",
+    categoryLabel: "لوازم جانبی",
+    brand: "Apple",
+    price: 16500000,
     src: "/images/Cart/airpodspro2.png",
   },
   {
     id: 3,
     title: "گوشی سامسونگ S23",
-    category: "سامسونگ",
-    price: "۳۹،۸۰۰،۰۰۰",
+    category: "phone",
+    categoryLabel: "گوشی موبایل",
+    brand: "Samsung",
+    price: 39800000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 4,
     title: "لپ‌تاپ دل XPS 13",
-    category: "دل",
-    price: "۶۲،۴۰۰،۰۰۰",
+    category: "laptop",
+    categoryLabel: "لپ‌تاپ",
+    brand: "Dell",
+    price: 62400000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 5,
     title: "هندزفری شیائومی",
-    category: "شیائومی",
-    price: "۲،۹۵۰،۰۰۰",
+    category: "accessory",
+    categoryLabel: "لوازم جانبی",
+    brand: "Xiaomi",
+    price: 2950000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 6,
     title: "مانیتور ال‌جی 27 اینچ",
-    category: "ال‌جی",
-    price: "۱۸،۷۰۰،۰۰۰",
+    category: "monitor",
+    categoryLabel: "مانیتور",
+    brand: "LG",
+    price: 18700000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 7,
     title: "تبلت آیپد پرو ۱۲.۹ اینچ",
-    category: "اپل",
-    price: "۷۵،۰۰۰،۰۰۰",
+    category: "tablet",
+    categoryLabel: "تبلت",
+    brand: "Apple",
+    price: 75000000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 8,
     title: "هدفون سونی WH-1000XM4",
-    category: "سونی",
-    price: "۲۱،۵۰۰،۰۰۰",
+    category: "accessory",
+    categoryLabel: "لوازم جانبی",
+    brand: "Sony",
+    price: 21500000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 9,
     title: "گوشی شیائومی Mi 11",
-    category: "شیائومی",
-    price: "۲۷،۳۰۰،۰۰۰",
+    category: "phone",
+    categoryLabel: "گوشی موبایل",
+    brand: "Xiaomi",
+    price: 27300000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 10,
     title: "تلویزیون سامسونگ 55 اینچ",
-    category: "سامسونگ",
-    price: "۴۵،۰۰۰،۰۰۰",
+    category: "tv",
+    categoryLabel: "تلویزیون",
+    brand: "Samsung",
+    price: 45000000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 11,
     title: "کنسول بازی پلی‌استیشن ۵",
-    category: "سونی",
-    price: "۳۲،۹۰۰،۰۰۰",
-    src: "/images/Cart/AppleWatch.png",
+    category: "console",
+    categoryLabel: "کنسول بازی",
+    brand: "Sony",
+    price: 32900000,
+    src: "/images/Cart/ps5.png",
   },
   {
     id: 12,
     title: "اسپیکر بلوتوث جی‌بی‌ال",
-    category: "جی‌بی‌ال",
-    price: "۴،۸۵۰،۰۰۰",
+    category: "accessory",
+    categoryLabel: "لوازم جانبی",
+    brand: "JBL",
+    price: 4850000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 13,
     title: "دوربین عکاسی کانن EOS M50",
-    category: "کانن",
-    price: "۳۴،۵۰۰،۰۰۰",
+    category: "camera",
+    categoryLabel: "دوربین",
+    brand: "Canon",
+    price: 34500000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 14,
     title: "لپ‌تاپ ایسوس ROG",
-    category: "ایسوس",
-    price: "۷۹،۰۰۰،۰۰۰",
+    category: "laptop",
+    categoryLabel: "لپ‌تاپ",
+    brand: "Asus",
+    price: 79000000,
     src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 15,
     title: "گوشی نوکیا G21",
-    category: "نوکیا",
-    price: "۷،۹۰۰،۰۰۰",
+    category: "phone",
+    categoryLabel: "گوشی موبایل",
+    brand: "Nokia",
+    price: 7900000,
     src: "/images/Cart/AppleWatch.png",
   },
 ];
 
 const colorOptions = ["bg-red-400", "bg-blue-400", "bg-green-400"];
 
+const formatter = new Intl.NumberFormat("fa-IR");
+
 export default function Products() {
   const [selectedColor, setSelectedColor] = useState({});
+  const [displayProducts, setDisplayProducts] = useState(products);
+
+  function handleSort(type) {
+    let sorted = [...displayProducts];
+
+    if (type === "expensive") {
+      sorted.sort((a, b) => b.price - a.price);
+    } else if (type === "cheap") {
+      sorted.sort((a, b) => a.price - b.price);
+    }
+    setDisplayProducts(sorted);
+  }
 
   return (
     <div className="flex flex-col md:flex-row gap-4 p-4">
@@ -131,10 +175,10 @@ export default function Products() {
         <div className="mx-auto">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <div className="hidden md:block col-span-full mb-11">
-              <SortButtons />
+              <SortButtons onSort={handleSort} />
             </div>
 
-            {products.map((product) => (
+            {displayProducts.map((product) => (
               <div
                 key={product.id}
                 className="bg-white w-full h-full rounded-xl p-1.5 shadow-lg"
@@ -145,8 +189,10 @@ export default function Products() {
                     <Image
                       src={product.src}
                       alt={product.title}
+                      // width={200}
+                      // height={200}
                       fill
-                      className="object-contain"
+                      className="object-contain hover-scale cursor-pointer"
                     />
                   </div>
                   <div className="w-8 h-8 bg-brand-gray-300 rounded-full absolute top-2 right-2">
@@ -170,8 +216,8 @@ export default function Products() {
 
                 {/* Category + Color Options */}
                 <div className="flex justify-between mb-5">
-                  <span className="text-brand-slate-200 text-xs">
-                    {product.category}
+                  <span className="text-brand-gray-300 text-xs">
+                    {product.categoryLabel}
                   </span>
                   <div className="flex items-center">
                     {colorOptions.map((color, i) => {
@@ -219,64 +265,21 @@ export default function Products() {
                 </Link>
 
                 {/* Price */}
-                <div className="flex justify-end gap-1 text-brand-orange-700 mb-3.5">
-                  <span>{product.price}</span> <span>تومان</span>
+                <div className="flex justify-end gap-1 text-brand-orange-700 mb-3.5 cursor-default my-2">
+                  <span>{formatter.format(product.price)}</span>{" "}
+                  <span>تومان</span>
                 </div>
 
                 <hr className="text-brand-gray-300-30 mb-2" />
 
-                {/* Button */}
                 <button className="text-brand-orange-400 font-bold w-full cursor-pointer">
-                  مشاهده و سفارش
+                  <Link href="/">مشاهده و سفارش</Link>
                 </button>
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-export function SortButtons() {
-  const [selected, setSelected] = useState("");
-  return (
-    <div className="bg-white px-4 py-2 rounded-lg flex items-center gap-x-4 text-brand-gray-300">
-      <div className="rounded-lg bg-brand-orange-100 w-10 h-10 flex justify-center cursor-pointer">
-        <SortBar />
-      </div>
-      <button
-        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
-          selected === "popular" ? "text-brand-slate-800 font-bold" : ""
-        }`}
-        onClick={() => setSelected("popular")}
-      >
-        محبوب ترین محصول
-      </button>
-      <button
-        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
-          selected === "visited" ? "text-brand-slate-800 font-bold" : ""
-        }`}
-        onClick={() => setSelected("visited")}
-      >
-        پر بازدید ترین محصول
-      </button>
-      <button
-        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
-          selected === "expensive" ? "text-brand-slate-800 font-bold" : ""
-        }`}
-        onClick={() => setSelected("expensive")}
-      >
-        گران ترین محصول
-      </button>
-      <button
-        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
-          selected === "cheap" ? "text-brand-slate-800 font-bold" : ""
-        }`}
-        onClick={() => setSelected("cheap")}
-      >
-        ارزان ترین محصول
-      </button>
     </div>
   );
 }

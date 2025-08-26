@@ -31,7 +31,7 @@
 
   /* ? Hover Effects */
   --hover-transition: all 0.2s ease-in-out;
-  --hover-scale: 1.05;
+  --hover-scale: 1.1;
   --hover-bg-light: #f8f8f8;
   --hover-text-primary: var(--color-brand-slate-800);
   --hover-text-accent: var(--color-brand-orange-500);

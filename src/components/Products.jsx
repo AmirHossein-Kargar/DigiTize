@@ -31,7 +31,7 @@ const products = [
     categoryLabel: "گوشی موبایل",
     brand: "Samsung",
     price: 39800000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "/images/Cart/S23.png",
   },
   {
     id: 4,
@@ -44,12 +44,12 @@ const products = [
   },
   {
     id: 5,
-    title: "هندزفری شیائومی",
+    title: "هدفون بلوتوثی شیائومی مدل Redmi Buds 5",
     category: "accessory",
     categoryLabel: "لوازم جانبی",
     brand: "Xiaomi",
     price: 2950000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "/images/Cart/RedmiBuds.png",
   },
   {
     id: 6,

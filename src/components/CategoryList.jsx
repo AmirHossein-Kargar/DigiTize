@@ -17,7 +17,7 @@ export default function CategoryList({ categories }) {
                   src={category.path}
                   alt={category.alt}
                   width={20}
-                  height={50}
+                  height={20}
                 />
               </div>
               <h2 className="hover-primary">{category.name}</h2>

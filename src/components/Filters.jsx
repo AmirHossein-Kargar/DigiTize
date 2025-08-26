@@ -1,6 +1,6 @@
 export default function Filters() {
   return (
-    <div className="flex justify-evenly  items-center gap-x-2 mb-11 md:hidden">
+    <div className="flex justify-evenly items-center gap-x-2 mb-11 md:hidden">
       <section className="bg-white h-11 w-48 rounded-sm flex items-center px-2 justify-center gap-2">
       <SortBar />
         <div>

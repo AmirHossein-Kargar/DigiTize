@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { SortBar } from "./Filters";
+import SideBar from "./SideBar";
 
 const products = [
   {
@@ -50,6 +51,36 @@ const products = [
     category: "سامسونگ",
     price: "۴۵،۰۰۰،۰۰۰",
   },
+  {
+    id: 11,
+    title: "کنسول بازی پلی‌استیشن ۵",
+    category: "سونی",
+    price: "۳۲،۹۰۰،۰۰۰",
+  },
+  {
+    id: 12,
+    title: "اسپیکر بلوتوث جی‌بی‌ال",
+    category: "جی‌بی‌ال",
+    price: "۴،۸۵۰،۰۰۰",
+  },
+  {
+    id: 13,
+    title: "دوربین عکاسی کانن EOS M50",
+    category: "کانن",
+    price: "۳۴،۵۰۰،۰۰۰",
+  },
+  {
+    id: 14,
+    title: "لپ‌تاپ ایسوس ROG",
+    category: "ایسوس",
+    price: "۷۹،۰۰۰،۰۰۰",
+  },
+  {
+    id: 15,
+    title: "گوشی نوکیا G21",
+    category: "نوکیا",
+    price: "۷،۹۰۰،۰۰۰",
+  },
 ];
 
 const colorOptions = ["bg-red-400", "bg-blue-400", "bg-green-400"];
@@ -60,15 +91,17 @@ export default function Products() {
   return (
     <div className="flex flex-col md:flex-row gap-4 p-4">
       {/* Sidebar */}
-      <div className="hidden md:block w-[215px] h-[61px] bg-white p-4">
-        Sidebar
+      <div className="hidden md:block">
+      <div className="bg-white p-4 w-[215px] rounded-lg">
+      <SideBar />
+      </div>
       </div>
 
       <div className="flex-1">
         <div className="mx-auto">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <div className="hidden md:block col-span-full mb-11">
-            <SortButtons />
+              <SortButtons />
             </div>
 
             {products.map((product) => (
@@ -150,7 +183,7 @@ export default function Products() {
 
                 <Link
                   href="/"
-                  className="text-sm font-bold mb-2 cursor-pointer"
+                  className="text-sm font-bold mb-2 cursor-pointer text-brand-slate-800"
                 >
                   {product.title}
                 </Link>
@@ -176,17 +209,44 @@ export default function Products() {
 }
 
 export function SortButtons() {
-  const [selected, setSelected] = useState("")
+  const [selected, setSelected] = useState("");
   return (
     <div className="bg-white px-4 py-2 rounded-lg flex items-center gap-x-4 text-brand-gray-300 ">
-    <div className="rounded-lg bg-brand-orange-100 w-10 h-10 flex justify-center cursor-pointer">
-    <SortBar />
-
+      <div className="rounded-lg bg-brand-orange-100 w-10 h-10 flex justify-center cursor-pointer">
+        <SortBar />
+      </div>
+      <button
+        className={`py-2 cursor-pointer transition-all duration-200 ${
+          selected === "popular" ? "text-brand-slate-800 font-bold" : ""
+        }`}
+        onClick={() => setSelected("popular")}
+      >
+        محبوب ترین محصول
+      </button>
+      <button
+        className={`py-2 cursor-pointer transition-all duration-200 ${
+          selected === "visited" ? "text-brand-slate-800 font-bold" : ""
+        }`}
+        onClick={() => setSelected("visited")}
+      >
+        پر بازدید ترین محصول
+      </button>
+      <button
+        className={`py-2 cursor-pointer transition-all duration-200 ${
+          selected === "expensive" ? "text-brand-slate-800 font-bold" : ""
+        }`}
+        onClick={() => setSelected("expensive")}
+      >
+        گران ترین محصول
+      </button>
+      <button
+        className={`py-2 cursor-pointer transition-all duration-200 ${
+          selected === "cheap" ? "text-brand-slate-800 font-bold" : ""
+        }`}
+        onClick={() => setSelected("cheap")}
+      >
+        ارزان ترین محصول
+      </button>
     </div>
-    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "popular" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("popular")}>محبوب ترین محصول</button>
-    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "visited" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("visited")}>پر بازدید ترین محصول</button>
-    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "expensive" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("expensive")}>گران ترین محصول</button>
-    <button className={`py-2 cursor-pointer transition-all duration-200 ${selected === "cheap" ? "text-brand-orange-400 font-bold" : ""}`} onClick={() => setSelected("cheap")}>ارزان ترین محصول</button>
-  </div>
-  )
+  );
 }

@@ -11,75 +11,105 @@ const products = [
     title: "ساعت هوشمند اپل سری 6",
     category: "اپل",
     price: "۴۸،۲۵۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
-  { id: 2, title: "ایرپاد پرو ۲", category: "اپل", price: "۱۶،۵۰۰،۰۰۰" },
+  {
+    id: 2,
+    title: "ایرپاد پرو ۲",
+    category: "اپل",
+    price: "۱۶،۵۰۰،۰۰۰",
+    src: "/images/Cart/airpodspro2.png",
+  },
   {
     id: 3,
     title: "گوشی سامسونگ S23",
     category: "سامسونگ",
     price: "۳۹،۸۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
-  { id: 4, title: "لپ‌تاپ دل XPS 13", category: "دل", price: "۶۲،۴۰۰،۰۰۰" },
-  { id: 5, title: "هندزفری شیائومی", category: "شیائومی", price: "۲،۹۵۰،۰۰۰" },
+  {
+    id: 4,
+    title: "لپ‌تاپ دل XPS 13",
+    category: "دل",
+    price: "۶۲،۴۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
+  },
+  {
+    id: 5,
+    title: "هندزفری شیائومی",
+    category: "شیائومی",
+    price: "۲،۹۵۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
+  },
   {
     id: 6,
     title: "مانیتور ال‌جی 27 اینچ",
     category: "ال‌جی",
     price: "۱۸،۷۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 7,
     title: "تبلت آیپد پرو ۱۲.۹ اینچ",
     category: "اپل",
     price: "۷۵،۰۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 8,
     title: "هدفون سونی WH-1000XM4",
     category: "سونی",
     price: "۲۱،۵۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 9,
     title: "گوشی شیائومی Mi 11",
     category: "شیائومی",
     price: "۲۷،۳۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 10,
     title: "تلویزیون سامسونگ 55 اینچ",
     category: "سامسونگ",
     price: "۴۵،۰۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 11,
     title: "کنسول بازی پلی‌استیشن ۵",
     category: "سونی",
     price: "۳۲،۹۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 12,
     title: "اسپیکر بلوتوث جی‌بی‌ال",
     category: "جی‌بی‌ال",
     price: "۴،۸۵۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 13,
     title: "دوربین عکاسی کانن EOS M50",
     category: "کانن",
     price: "۳۴،۵۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 14,
     title: "لپ‌تاپ ایسوس ROG",
     category: "ایسوس",
     price: "۷۹،۰۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
   {
     id: 15,
     title: "گوشی نوکیا G21",
     category: "نوکیا",
     price: "۷،۹۰۰،۰۰۰",
+    src: "/images/Cart/AppleWatch.png",
   },
 ];
 
@@ -92,9 +122,9 @@ export default function Products() {
     <div className="flex flex-col md:flex-row gap-4 p-4">
       {/* Sidebar */}
       <div className="hidden md:block">
-      <div className="bg-white p-4 w-[215px] rounded-lg">
-      <SideBar />
-      </div>
+        <div className="bg-white p-4 w-[215px] rounded-lg">
+          <SideBar />
+        </div>
       </div>
 
       <div className="flex-1">
@@ -111,9 +141,9 @@ export default function Products() {
               >
                 {/* Product Image */}
                 <div className=" relative bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
-                  <div className="relative w-16 h-28">
+                  <div className="relative w-full h-28">
                     <Image
-                      src="/images/Cart/AppleWatch.png"
+                      src={product.src}
                       alt={product.title}
                       fill
                       className="object-contain"
@@ -211,12 +241,12 @@ export default function Products() {
 export function SortButtons() {
   const [selected, setSelected] = useState("");
   return (
-    <div className="bg-white px-4 py-2 rounded-lg flex items-center gap-x-4 text-brand-gray-300 ">
+    <div className="bg-white px-4 py-2 rounded-lg flex items-center gap-x-4 text-brand-gray-300">
       <div className="rounded-lg bg-brand-orange-100 w-10 h-10 flex justify-center cursor-pointer">
         <SortBar />
       </div>
       <button
-        className={`py-2 cursor-pointer transition-all duration-200 ${
+        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
           selected === "popular" ? "text-brand-slate-800 font-bold" : ""
         }`}
         onClick={() => setSelected("popular")}
@@ -224,7 +254,7 @@ export function SortButtons() {
         محبوب ترین محصول
       </button>
       <button
-        className={`py-2 cursor-pointer transition-all duration-200 ${
+        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
           selected === "visited" ? "text-brand-slate-800 font-bold" : ""
         }`}
         onClick={() => setSelected("visited")}
@@ -232,7 +262,7 @@ export function SortButtons() {
         پر بازدید ترین محصول
       </button>
       <button
-        className={`py-2 cursor-pointer transition-all duration-200 ${
+        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
           selected === "expensive" ? "text-brand-slate-800 font-bold" : ""
         }`}
         onClick={() => setSelected("expensive")}
@@ -240,7 +270,7 @@ export function SortButtons() {
         گران ترین محصول
       </button>
       <button
-        className={`py-2 cursor-pointer transition-all duration-200 ${
+        className={`py-2 cursor-pointer transition-all duration-200 hover:text-brand-slate-800 ${
           selected === "cheap" ? "text-brand-slate-800 font-bold" : ""
         }`}
         onClick={() => setSelected("cheap")}

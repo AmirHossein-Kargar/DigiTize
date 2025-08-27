@@ -144,7 +144,7 @@ const products = [
     brand: "Asus",
     slug: "asus-rog-laptop",
     price: 79000000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "/images/Cart/Asus-Rog.png",
   },
   {
     id: 15,
@@ -188,8 +188,6 @@ export default function Products() {
 
   return (
     <>
-   
-
       <main className="flex flex-col md:flex-row gap-4 p-4">
         {/* Sidebar */}
         <aside className="hidden md:block w-[215px] space-y-4">
@@ -313,7 +311,7 @@ export default function Products() {
                   <h3 className="text-sm font-bold mb-3 min-h-[3rem] flex items-start">
                     <Link
                       href={`/products/${product.slug}`}
-                      className="cursor-pointer text-brand-slate-800 hover:text-brand-orange-400 transition-colors duration-200 line-clamp-2 block"
+                      className="cursor-pointer text-brand-slate-800 hover:text-brand-slate-900 transition-colors duration-200 line-clamp-2 block"
                       itemProp="name"
                     >
                       {product.title}

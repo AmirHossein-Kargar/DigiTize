@@ -161,17 +161,16 @@ export default function SideBar() {
       { id: "fujifilm", label: "فوجی‌فیلم" },
     ],
   };
-const colorOptions = [
-  { id: "black", hex: "#000000", label: "مشکی" },
-  { id: "white", hex: "#FFFFFF", label: "سفید" },
-  { id: "red", hex: "#EF4444", label: "قرمز" },
-  { id: "blue", hex: "#3B82F6", label: "آبی" },
-  { id: "yellow", hex: "#FACC15", label: "زرد" },
-  { id: "green", hex: "#10B981", label: "سبز" },
-  { id: "purple", hex: "#8B5CF6", label: "بنفش" },
-  { id: "pink", hex: "#EC4899", label: "صورتی" }
-];
-
+  const colorOptions = [
+    { id: "black", hex: "#000000", label: "مشکی" },
+    { id: "white", hex: "#FFFFFF", label: "سفید" },
+    { id: "red", hex: "#EF4444", label: "قرمز" },
+    { id: "blue", hex: "#3B82F6", label: "آبی" },
+    { id: "yellow", hex: "#FACC15", label: "زرد" },
+    { id: "green", hex: "#10B981", label: "سبز" },
+    { id: "purple", hex: "#8B5CF6", label: "بنفش" },
+    { id: "pink", hex: "#EC4899", label: "صورتی" },
+  ];
 
   function handleAccordionToggle(isOpen) {
     if (isOpen) {

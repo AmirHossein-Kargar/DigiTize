@@ -2,9 +2,11 @@ export default function Filters() {
   return (
     <div className="flex justify-evenly items-center gap-x-2 mb-11 md:hidden">
       <section className="bg-white h-11 w-48 rounded-sm flex items-center px-2 justify-center gap-2">
-      <SortBar />
+        <SortBar />
         <div>
-          <span className="text-sm text-brand-slate-800 max-xs:text-xs font-bold">محبوب ترین محصول</span>
+          <span className="text-sm text-brand-slate-800 max-xs:text-xs font-bold">
+            محبوب ترین محصول
+          </span>
         </div>
       </section>
 
@@ -45,54 +47,54 @@ export default function Filters() {
 export function SortBar() {
   return (
     <div className="flex items-center">
-    <div>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M3 7H21"
-          stroke="#FC5858"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path
-          opacity="0.34"
-          d="M6 12H18"
-          stroke="#FC5858"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M10 17H14"
-          stroke="#FC5858"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    </div>
+      <div>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 7H21"
+            stroke="#FC5858"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          <path
+            opacity="0.34"
+            d="M6 12H18"
+            stroke="#FC5858"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M10 17H14"
+            stroke="#FC5858"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
 
-    <div>
-      <svg
-        width="14"
-        height="21"
-        viewBox="0 0 14 21"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M6.99982 19.3958C6.88899 19.3958 6.77816 19.355 6.69066 19.2675L3.14982 15.7267C2.98066 15.5575 2.98066 15.2775 3.14982 15.1083C3.31899 14.9392 3.59899 14.9392 3.76816 15.1083L6.99982 18.34L10.2315 15.1083C10.4007 14.9392 10.6807 14.9392 10.8498 15.1083C11.019 15.2775 11.019 15.5575 10.8498 15.7267L7.30899 19.2675C7.22149 19.355 7.11066 19.3958 6.99982 19.3958Z"
-          fill="#FC5858"
-        />
-        <path
-          d="M7.0625 18.604C6.78917 18.604 6.5625 18.2701 6.5625 17.8675V1.3405C6.5625 0.937883 6.78917 0.604004 7.0625 0.604004C7.33583 0.604004 7.5625 0.937883 7.5625 1.3405V17.8675C7.5625 18.2701 7.33583 18.604 7.0625 18.604Z"
-          fill="#FC5858"
-        />
-      </svg>
+      <div>
+        <svg
+          width="14"
+          height="21"
+          viewBox="0 0 14 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.99982 19.3958C6.88899 19.3958 6.77816 19.355 6.69066 19.2675L3.14982 15.7267C2.98066 15.5575 2.98066 15.2775 3.14982 15.1083C3.31899 14.9392 3.59899 14.9392 3.76816 15.1083L6.99982 18.34L10.2315 15.1083C10.4007 14.9392 10.6807 14.9392 10.8498 15.1083C11.019 15.2775 11.019 15.5575 10.8498 15.7267L7.30899 19.2675C7.22149 19.355 7.11066 19.3958 6.99982 19.3958Z"
+            fill="#FC5858"
+          />
+          <path
+            d="M7.0625 18.604C6.78917 18.604 6.5625 18.2701 6.5625 17.8675V1.3405C6.5625 0.937883 6.78917 0.604004 7.0625 0.604004C7.33583 0.604004 7.5625 0.937883 7.5625 1.3405V17.8675C7.5625 18.2701 7.33583 18.604 7.0625 18.604Z"
+            fill="#FC5858"
+          />
+        </svg>
+      </div>
     </div>
-  </div>
-  )
+  );
 }

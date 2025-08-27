@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import CategoryList, { CategoryIcon } from "./CategoryList";
 import AccordionItem from "./Accordion";
@@ -73,16 +73,101 @@ const moreCategories = [
   },
 ];
 
-
 const filters = [
-  { id: 1, name: "برند محصول", icon: "/images/categories/brand.svg", alt: "brand", href: "/" },
-  { id: 2, name: "رنگ محصول", icon: "/images/categories/color.svg", alt: "color", href: "/" },
-  { id: 3, name: "محدوده قیمت", icon: "/images/categories/price.svg", alt: "color", href: "/" },
+  {
+    id: 1,
+    name: "برند محصول",
+    icon: "/images/categories/brand.svg",
+    alt: "brand",
+    href: "/",
+  },
+  {
+    id: 2,
+    name: "رنگ محصول",
+    icon: "/images/categories/color.svg",
+    alt: "color",
+    href: "/",
+  },
+  {
+    id: 3,
+    name: "محدوده قیمت",
+    icon: "/images/categories/price.svg",
+    alt: "color",
+    href: "/",
+  },
 ];
-
 
 export default function SideBar() {
   const [allCategories, setAllCategories] = useState(categories);
+  const [selectedCategoryKey, setSelectedCategoryKey] = useState(
+    categories[0]?.key
+  );
+  const brandOptionsByCategory = {
+    phone: [
+      { id: "apple", label: "اپل" },
+      { id: "samsung", label: "سامسونگ" },
+      { id: "xiaomi", label: "شیائومی" },
+      { id: "nokia", label: "نوکیا" },
+      { id: "huawei", label: "هواوی" },
+    ],
+    laptop: [
+      { id: "dell", label: "دل" },
+      { id: "asus", label: "ایسوس" },
+      { id: "apple", label: "اپل" },
+      { id: "lenovo", label: "لنوو" },
+      { id: "hp", label: "اچ‌پی" },
+    ],
+    smartwatch: [
+      { id: "apple", label: "اپل" },
+      { id: "samsung", label: "سامسونگ" },
+      { id: "xiaomi", label: "شیائومی" },
+      { id: "huawei", label: "هواوی" },
+    ],
+    accessory: [
+      { id: "apple", label: "اپل" },
+      { id: "xiaomi", label: "شیائومی" },
+      { id: "sony", label: "سونی" },
+      { id: "jbl", label: "جی‌بی‌ال" },
+      { id: "anker", label: "انکر" },
+    ],
+    monitor: [
+      { id: "lg", label: "ال‌جی" },
+      { id: "samsung", label: "سامسونگ" },
+      { id: "asus", label: "ایسوس" },
+      { id: "benq", label: "بنکیو" },
+    ],
+    tablet: [
+      { id: "apple", label: "اپل" },
+      { id: "samsung", label: "سامسونگ" },
+      { id: "huawei", label: "هواوی" },
+      { id: "xiaomi", label: "شیائومی" },
+    ],
+    tv: [
+      { id: "samsung", label: "سامسونگ" },
+      { id: "lg", label: "ال‌جی" },
+      { id: "sony", label: "سونی" },
+      { id: "tcl", label: "تی‌سی‌ال" },
+    ],
+    console: [
+      { id: "sony", label: "سونی (پلی‌استیشن)" },
+      { id: "microsoft", label: "مایکروسافت (ایکس‌باکس)" },
+      { id: "nintendo", label: "نینتندو" },
+    ],
+    camera: [
+      { id: "canon", label: "کانن" },
+      { id: "nikon", label: "نیکون" },
+      { id: "sony", label: "سونی" },
+      { id: "fujifilm", label: "فوجی‌فیلم" },
+    ],
+  };
+
+  const colorOptions = [
+    { id: "black", hex: "#000000", label: "مشکی" },
+    { id: "white", hex: "#FFFFFF", label: "سفید" },
+    { id: "red", hex: "#EF4444", label: "قرمز" },
+    { id: "blue", hex: "#3B82F6", label: "آبی" },
+    { id: "green", hex: "#10B981", label: "سبز" },
+  ];
 
   function handleAccordionToggle(isOpen) {
     if (isOpen) {
@@ -91,31 +176,86 @@ export default function SideBar() {
       setAllCategories(categories);
     }
   }
+
   return (
     <>
-      <CategoryList categories={allCategories} />
-      <AccordionItem onToggle={handleAccordionToggle}>
-        <div className="text-center text-brand-gray-300 text-sm py-2">
-          نمایش دسته‌بندی‌های بیشتر
-        </div>
-      </AccordionItem>
+      <CategoryList
+        categories={allCategories}
+        onSelect={(key) => setSelectedCategoryKey(key)}
+        selectedKey={selectedCategoryKey}
+      />
+      <AccordionItem
+        onToggle={handleAccordionToggle}
+        trigger={
+          <div className="text-center text-brand-gray-300 text-sm py-2">
+            نمایش دسته‌بندی‌های بیشتر
+          </div>
+        }
+      />
       <hr className="text-brand-gray-200" />
 
       <div className="flex flex-col gap-6 mb-5">
-  <h2 className="text-brand-orange-400 font-bold text-lg mt-4">فیلتر</h2>
+        <h2 className="text-brand-orange-400 font-bold text-lg mt-4">فیلتر</h2>
 
-  <ul className="flex flex-col gap-6 cursor-pointer text-brand-gray-300">
-    {filters.map((filter) => (
-      <li key={filter.id} className="flex justify-between items-center hover-primary cursor-pointer">
-        <CategoryIcon src={filter.icon} alt={filter.alt} />
-        <Link href={filter.href}>{filter.name}</Link>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
-      </li>
-    ))}
-  </ul>
-</div>
+        <ul className="flex flex-col gap-6 cursor-pointer text-brand-gray-300">
+          {filters.map((filter) => (
+            <li key={filter.id} className="hover-primary cursor-pointer">
+              <AccordionItem
+                trigger={
+                  <div className="flex justify-between items-center w-full">
+                    <div className="flex items-center gap-2">
+                      <CategoryIcon src={filter.icon} alt={filter.alt} />
+                      <Link href={filter.href}>{filter.name}</Link>
+                    </div>
+                  </div>
+                }
+              >
+                {filter.name === "برند محصول" && (
+                  <div className="flex flex-col gap-3 pr-1">
+                    {(brandOptionsByCategory[selectedCategoryKey] || []).map(
+                      (brand) => (
+                        <label
+                          key={brand.id}
+                          className="flex items-center gap-2 text-sm"
+                        >
+                          <input
+                            type="checkbox"
+                            className="accent-brand-orange-400"
+                          />
+                          <span>{brand.label}</span>
+                        </label>
+                      )
+                    )}
+                  </div>
+                )}
+
+                {filter.name === "رنگ محصول" && (
+                  <div className="flex flex-wrap gap-3">
+                    {colorOptions.map((c) => (
+                      <div
+                        key={c.id}
+                        className="flex items-center gap-2 text-sm"
+                      >
+                        <span
+                          className="inline-block w-5 h-5 rounded-full border border-brand-gray-200"
+                          style={{ backgroundColor: c.hex }}
+                        />
+                        <span>{c.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {filter.name === "محدوده قیمت" && (
+                  <div className="text-sm text-brand-gray-300">
+                    به‌زودی: فیلتر قیمت
+                  </div>
+                )}
+              </AccordionItem>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

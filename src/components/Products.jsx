@@ -166,6 +166,15 @@ export default function Products() {
   const [selectedColor, setSelectedColor] = useState({});
   const [displayProducts, setDisplayProducts] = useState(products);
 
+  // * product status
+  const [cart, setCart] = useState([]);
+
+  const toggleCart = (id) => {
+    setCart((prev) =>
+      prev.includes(id) ? prev.filter((pid) => pid !== id) : [...prev, id]
+    );
+  };
+
   function handleSort(type) {
     let sorted = [...displayProducts];
 
@@ -178,41 +187,45 @@ export default function Products() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 p-4">
+    <main className="flex flex-col md:flex-row gap-4 p-4">
       {/* Sidebar */}
-      <div className="hidden md:block">
+      <aside className="hidden md:block">
         <div className="bg-white p-4 w-[215px] rounded-lg">
           <SideBar />
         </div>
-      </div>
+      </aside>
 
-      <div className="flex-1">
+      <section className="flex-1">
         <div className="mx-auto">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            <div className="hidden md:block col-span-full mb-11">
+            <header className="hidden md:block col-span-full mb-11">
               <SortButtons onSort={handleSort} />
-            </div>
+            </header>
 
             {displayProducts.map((product) => (
-              <div
+              <article
                 key={product.id}
                 className="bg-white w-full h-full rounded-xl p-1.5 shadow-lg flex flex-col"
+                itemScope
+                itemType="http://schema.org/Product"
               >
                 {/* Product Image */}
-                <div className=" relative bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
+                <figure className="relative bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
                   <div className="relative w-full h-28">
                     <Link href={`/products/${product.slug}`}>
                       <Image
                         src={product.src}
                         alt={product.title}
-                        // width={200}
-                        // height={200}
                         fill
                         className="object-contain hover-scale cursor-pointer"
+                        itemProp="image"
                       />
                     </Link>
                   </div>
-                  <div className="w-8 h-8 bg-brand-gray-300 rounded-full absolute top-2 right-2">
+                  <button
+                    className="w-8 h-8 bg-brand-gray-300 rounded-full absolute top-2 right-2"
+                    aria-label="افزودن به علاقه‌ مندی‌ها"
+                  >
                     <svg
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                       width="20"
@@ -228,20 +241,25 @@ export default function Products() {
                         fill="#FC5858"
                       />
                     </svg>
-                  </div>
-                </div>
+                  </button>
+                </figure>
 
                 {/* Category + Color Options */}
                 <div className="flex justify-between mb-5">
-                  <span className="text-brand-gray-300 text-xs">
+                  <span
+                    className="text-brand-gray-300 text-xs"
+                    itemProp="category"
+                  >
                     {product.categoryLabel}
                   </span>
-                  <div className="flex items-center">
+                  <fieldset className="flex items-center">
+                    <legend className="sr-only">انتخاب رنگ</legend>
                     {colorOptions.map((color, i) => {
                       const isSelected = selectedColor[product.id] === color;
                       return (
-                        <div
+                        <button
                           key={i}
+                          type="button"
                           onClick={() =>
                             setSelectedColor({
                               ...selectedColor,
@@ -249,6 +267,8 @@ export default function Products() {
                             })
                           }
                           className={`w-6 h-6 rounded-full cursor-pointer -mr-1 border-2 border-white relative ${color}`}
+                          aria-label={`انتخاب رنگ ${i + 1}`}
+                          aria-pressed={isSelected}
                         >
                           {isSelected && (
                             <svg
@@ -266,41 +286,51 @@ export default function Products() {
                               />
                             </svg>
                           )}
-                        </div>
+                        </button>
                       );
                     })}
-                  </div>
+                  </fieldset>
                 </div>
 
                 {/* Product Title */}
-
-                <Link
-                  href={`/products/${product.slug}`}
-                  className="text-sm font-bold mb-2 cursor-pointer text-brand-slate-800"
-                >
-                  {product.title}
-                </Link>
+                <h3 className="text-sm font-bold mb-3 min-h-[3rem] flex items-start">
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className="cursor-pointer text-brand-slate-800 hover:text-brand-orange-400 transition-colors duration-200 line-clamp-2 block"
+                    itemProp="name"
+                  >
+                    {product.title}
+                  </Link>
+                </h3>
 
                 {/* Price */}
-                <div className="flex justify-end gap-1 text-brand-orange-700 mb-3.5 cursor-default my-2">
-                  <span>{formatter.format(product.price)}</span>{" "}
-                  <span>تومان</span>
+                <div className="flex justify-end gap-1 text-brand-orange-700 mb-3 cursor-default">
+                  <span itemProp="price" content={product.price}>
+                    {formatter.format(product.price)}
+                  </span>
+                  <span itemProp="priceCurrency" content="IRR">
+                    تومان
+                  </span>
                 </div>
 
-                <div className="mt-auto">
+                <footer className="mt-auto">
                   <hr className="text-brand-gray-300-30 mb-2" />
-                  <button className="text-brand-orange-400 font-bold w-full cursor-pointer">
-                    <Link href={`/products/${product.slug}`}>
-                افزودن به سبد خرید
-                    </Link>
+                  <button
+                    onClick={() => toggleCart(product.id)}
+                    // href={`/products/${product.slug}`}
+                    className="text-brand-orange-400 font-bold w-full cursor-pointer block text-center hover:text-brand-orange-500 transition-colors"
+                    aria-label={`مشاهده جزئیات ${product.title}`}
+                  >
+                    {cart.includes(product.id)
+                      ? "حذف از سبد خرید"
+                      : "افزودن به سبد خرید"}
                   </button>
-                </div>
-
-              </div>
+                </footer>
+              </article>
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

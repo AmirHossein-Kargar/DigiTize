@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AccordionItem({ children, onToggle }) {
+export default function AccordionItem({ children, onToggle, trigger }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -13,8 +13,9 @@ export default function AccordionItem({ children, onToggle }) {
     <div className="mb-2">
       <button
         onClick={handleClick}
-        className="w-full flex justify-center items-center p-2 cursor-pointer"
+        className="w-full flex justify-between items-center p-2 cursor-pointer"
       >
+        <div className="flex-1">{trigger}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -22,7 +23,7 @@ export default function AccordionItem({ children, onToggle }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`w-6 h-6 transform transition-transform duration-300 ease-in-out hover-accent ${
+          className={`w-4 h-4 transform transition-transform duration-300 ease-in-out hover-accent ${
             isOpen ? "rotate-180" : "rotate-0"
           }`}
         >

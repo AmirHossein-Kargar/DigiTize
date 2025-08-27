@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function CategoryList({ categories }) {
+export default function CategoryList({ categories, onSelect, selectedKey }) {
   return (
     <div className="flex flex-col gap-6 duration-200 transition-all mb-5">
       <h2 className="text-brand-orange-400 font-bold text-lg">دسته بندی</h2>
@@ -10,9 +10,12 @@ export default function CategoryList({ categories }) {
           return (
             <li
               key={category.id}
-              className="flex items-center gap-4 hover-primary cursor-pointer"
+              onClick={() => onSelect && onSelect(category.key)}
+              className={`flex items-center gap-4 hover-primary cursor-pointer ${
+                selectedKey === category.key ? "text-brand-orange-400" : ""
+              }`}
             >
-             <CategoryIcon src={category.path} alt={category.alt}/>
+              <CategoryIcon src={category.path} alt={category.alt} />
               <h2 className="hover-primary">{category.name}</h2>
             </li>
           );
@@ -22,15 +25,10 @@ export default function CategoryList({ categories }) {
   );
 }
 
-export function CategoryIcon({src, alt}) {
+export function CategoryIcon({ src, alt }) {
   return (
     <div className="w-8 h-8 bg-brand-gray-300-30 rounded-full relative flex items-center justify-center">
-    <Image
-      src={src}
-      alt={alt}
-      width={20}
-      height={20}
-    />
-  </div>
-  )
+      <Image src={src} alt={alt} width={20} height={20} />
+    </div>
+  );
 }

@@ -3,30 +3,7 @@ import React, { useState } from "react";
 import CategoryList, { CategoryIcon } from "./CategoryList";
 import AccordionItem from "./Accordion";
 import Link from "next/link";
-
-const categories = [
-  {
-    id: 1,
-    name: "گوشی موبایل",
-    alt: "phone",
-    path: "/images/categories/phone.svg",
-    key: "phone",
-  },
-  {
-    id: 2,
-    name: "لپ‌تاپ",
-    alt: "laptop",
-    path: "/images/categories/laptop.svg",
-    key: "laptop",
-  },
-  {
-    id: 3,
-    name: "ساعت هوشمند",
-    alt: "smartwatch",
-    path: "/images/categories/watch.svg",
-    key: "smartwatch",
-  },
-];
+import { CATEGORIES, FILTERS } from "@/constants/data";
 
 const moreCategories = [
   {
@@ -73,34 +50,10 @@ const moreCategories = [
   },
 ];
 
-const filters = [
-  {
-    id: 1,
-    name: "برند محصول",
-    icon: "/images/categories/brand.svg",
-    alt: "brand",
-    href: "/",
-  },
-  {
-    id: 2,
-    name: "رنگ محصول",
-    icon: "/images/categories/color.svg",
-    alt: "color",
-    href: "/",
-  },
-  {
-    id: 3,
-    name: "محدوده قیمت",
-    icon: "/images/categories/price.svg",
-    alt: "color",
-    href: "/",
-  },
-];
-
 export default function SideBar() {
-  const [allCategories, setAllCategories] = useState(categories);
+  const [allCategories, setAllCategories] = useState(CATEGORIES);
   const [selectedCategoryKey, setSelectedCategoryKey] = useState(
-    categories[0]?.key
+    CATEGORIES[0]?.key
   );
   const [selectedBrandId, setSelectedBrandId] = useState(null);
   const brandOptionsByCategory = {
@@ -174,9 +127,9 @@ export default function SideBar() {
 
   function handleAccordionToggle(isOpen) {
     if (isOpen) {
-      setAllCategories([...categories, ...moreCategories]);
+      setAllCategories([...CATEGORIES, ...moreCategories]);
     } else {
-      setAllCategories(categories);
+      setAllCategories(CATEGORIES);
     }
   }
 
@@ -201,7 +154,7 @@ export default function SideBar() {
         <h2 className="text-brand-orange-400 font-bold text-lg mt-4">فیلتر</h2>
 
         <ul className="flex flex-col gap-6 cursor-pointer text-brand-gray-300">
-          {filters.map((filter) => (
+          {FILTERS.map((filter) => (
             <li key={filter.id} className="hover-primary cursor-pointer">
               <AccordionItem
                 trigger={

@@ -40,8 +40,8 @@ export default function Navbar() {
             <Link href="/">
               <Image
                 src="/images/cart.svg"
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 alt="shopping-cart"
               />
             </Link>

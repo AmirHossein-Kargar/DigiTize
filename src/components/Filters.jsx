@@ -49,8 +49,7 @@ export function SortBar() {
     <div className="flex items-center">
       <div>
         <svg
-          width="24"
-          height="24"
+          className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -79,8 +78,7 @@ export function SortBar() {
 
       <div>
         <svg
-          width="14"
-          height="21"
+          className="w-2.5 h-3.5 md:w-3 md:h-4 lg:w-3.5 lg:h-5"
           viewBox="0 0 14 21"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

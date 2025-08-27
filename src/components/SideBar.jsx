@@ -102,6 +102,7 @@ export default function SideBar() {
   const [selectedCategoryKey, setSelectedCategoryKey] = useState(
     categories[0]?.key
   );
+  const [selectedBrandId, setSelectedBrandId] = useState(null);
   const brandOptionsByCategory = {
     phone: [
       { id: "apple", label: "اپل" },
@@ -160,14 +161,17 @@ export default function SideBar() {
       { id: "fujifilm", label: "فوجی‌فیلم" },
     ],
   };
+const colorOptions = [
+  { id: "black", hex: "#000000", label: "مشکی" },
+  { id: "white", hex: "#FFFFFF", label: "سفید" },
+  { id: "red", hex: "#EF4444", label: "قرمز" },
+  { id: "blue", hex: "#3B82F6", label: "آبی" },
+  { id: "yellow", hex: "#FACC15", label: "زرد" },
+  { id: "green", hex: "#10B981", label: "سبز" },
+  { id: "purple", hex: "#8B5CF6", label: "بنفش" },
+  { id: "pink", hex: "#EC4899", label: "صورتی" }
+];
 
-  const colorOptions = [
-    { id: "black", hex: "#000000", label: "مشکی" },
-    { id: "white", hex: "#FFFFFF", label: "سفید" },
-    { id: "red", hex: "#EF4444", label: "قرمز" },
-    { id: "blue", hex: "#3B82F6", label: "آبی" },
-    { id: "green", hex: "#10B981", label: "سبز" },
-  ];
 
   function handleAccordionToggle(isOpen) {
     if (isOpen) {
@@ -216,12 +220,17 @@ export default function SideBar() {
                       (brand) => (
                         <label
                           key={brand.id}
-                          className="flex items-center gap-2 text-sm"
+                          className="flex items-center gap-2 text-sm cursor-pointer"
                         >
                           <input
-                            type="checkbox"
-                            className="accent-brand-orange-400"
+                            type="radio"
+                            name={`brand-${selectedCategoryKey}`}
+                            value={brand.id}
+                            checked={selectedBrandId === brand.id}
+                            onChange={() => setSelectedBrandId(brand.id)}
+                            className="w-4 h-4 bg-white rounded cursor-pointer border border-brand-gray-200 accent-brand-orange-300 appearance-none checked:bg-brand-orange-300 checked:border-brand-orange-300"
                           />
+
                           <span>{brand.label}</span>
                         </label>
                       )
@@ -230,14 +239,14 @@ export default function SideBar() {
                 )}
 
                 {filter.name === "رنگ محصول" && (
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap flex-col gap-3">
                     {colorOptions.map((c) => (
                       <div
                         key={c.id}
                         className="flex items-center gap-2 text-sm"
                       >
                         <span
-                          className="inline-block w-5 h-5 rounded-full border border-brand-gray-200"
+                          className="inline-block w-4 h-4 rounded border border-brand-gray-200"
                           style={{ backgroundColor: c.hex }}
                         />
                         <span>{c.label}</span>

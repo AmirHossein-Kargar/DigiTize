@@ -189,16 +189,29 @@ export default function Products() {
   return (
     <main className="flex flex-col md:flex-row gap-4 p-4">
       {/* Sidebar */}
-      <aside className="hidden md:block">
-        <div className="bg-white p-4 w-[215px] rounded-lg">
+      <aside className="hidden md:block w-[215px] space-y-4">
+        <div className="bg-white p-4 rounded-lg">
           <SideBar />
         </div>
+
+        {/* Advertise Section */}
+        <div className="w-full h-44 relative overflow-hidden bg-brand-slate-800 rounded-lg flex flex-col justify-end items-center">
+          <div className="w-40 h-40 -top-25 -right-20 absolute border border-brand-orange-700 rounded-full"></div>
+
+          <div className="mb-4">
+            <h2 className="text-3xl font-bold text-brand-slate-700 text-center ">
+              SMART WATCH
+            </h2>
+            <h3 className="text-brand-stone-50 font-bold ">جدیدترین ساعت های هوشمند</h3>
+          </div>
+        </div>
+
       </aside>
 
       <section className="flex-1">
         <div className="mx-auto">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            <header className="hidden md:block col-span-full mb-11">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-y-10">
+            <header className="hidden md:block col-span-full">
               <SortButtons onSort={handleSort} />
             </header>
 

@@ -12,6 +12,7 @@ const products = [
     category: "smartwatch",
     categoryLabel: "ساعت هوشمند",
     brand: "Apple",
+    slug: "apple-watch-series-6",
     price: 48250000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -21,6 +22,7 @@ const products = [
     category: "accessory",
     categoryLabel: "لوازم جانبی",
     brand: "Apple",
+    slug: "airpods-pro-2",
     price: 16500000,
     src: "/images/Cart/airpodspro2.png",
   },
@@ -30,6 +32,7 @@ const products = [
     category: "phone",
     categoryLabel: "گوشی موبایل",
     brand: "Samsung",
+    slug: "samsung-galaxy-s23",
     price: 39800000,
     src: "/images/Cart/S23.png",
   },
@@ -39,6 +42,7 @@ const products = [
     category: "laptop",
     categoryLabel: "لپ‌تاپ",
     brand: "Dell",
+    slug: "dell-xps-13",
     price: 62400000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -48,6 +52,7 @@ const products = [
     category: "accessory",
     categoryLabel: "لوازم جانبی",
     brand: "Xiaomi",
+    slug: "xiaomi-redmi-buds-5",
     price: 2950000,
     src: "/images/Cart/RedmiBuds.png",
   },
@@ -57,6 +62,7 @@ const products = [
     category: "monitor",
     categoryLabel: "مانیتور",
     brand: "LG",
+    slug: "lg-monitor-27-inch",
     price: 18700000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -66,6 +72,7 @@ const products = [
     category: "tablet",
     categoryLabel: "تبلت",
     brand: "Apple",
+    slug: "ipad-pro-12-9",
     price: 75000000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -75,6 +82,7 @@ const products = [
     category: "accessory",
     categoryLabel: "لوازم جانبی",
     brand: "Sony",
+    slug: "sony-wh-1000xm4",
     price: 21500000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -84,6 +92,7 @@ const products = [
     category: "phone",
     categoryLabel: "گوشی موبایل",
     brand: "Xiaomi",
+    slug: "xiaomi-mi-11",
     price: 27300000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -93,6 +102,7 @@ const products = [
     category: "tv",
     categoryLabel: "تلویزیون",
     brand: "Samsung",
+    slug: "samsung-tv-55-inch",
     price: 45000000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -102,6 +112,7 @@ const products = [
     category: "console",
     categoryLabel: "کنسول بازی",
     brand: "Sony",
+    slug: "playstation-5",
     price: 32900000,
     src: "/images/Cart/ps5.png",
   },
@@ -111,6 +122,7 @@ const products = [
     category: "accessory",
     categoryLabel: "لوازم جانبی",
     brand: "JBL",
+    slug: "jbl-bluetooth-speaker",
     price: 4850000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -120,6 +132,7 @@ const products = [
     category: "camera",
     categoryLabel: "دوربین",
     brand: "Canon",
+    slug: "canon-eos-m50",
     price: 34500000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -129,6 +142,7 @@ const products = [
     category: "laptop",
     categoryLabel: "لپ‌تاپ",
     brand: "Asus",
+    slug: "asus-rog-laptop",
     price: 79000000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -138,6 +152,7 @@ const products = [
     category: "phone",
     categoryLabel: "گوشی موبایل",
     brand: "Nokia",
+    slug: "nokia-g21",
     price: 7900000,
     src: "/images/Cart/AppleWatch.png",
   },
@@ -181,19 +196,21 @@ export default function Products() {
             {displayProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white w-full h-full rounded-xl p-1.5 shadow-lg"
+                className="bg-white w-full h-full rounded-xl p-1.5 shadow-lg flex flex-col"
               >
                 {/* Product Image */}
                 <div className=" relative bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
                   <div className="relative w-full h-28">
-                    <Image
-                      src={product.src}
-                      alt={product.title}
-                      // width={200}
-                      // height={200}
-                      fill
-                      className="object-contain hover-scale cursor-pointer"
-                    />
+                    <Link href={`/products/${product.slug}`}>
+                      <Image
+                        src={product.src}
+                        alt={product.title}
+                        // width={200}
+                        // height={200}
+                        fill
+                        className="object-contain hover-scale cursor-pointer"
+                      />
+                    </Link>
                   </div>
                   <div className="w-8 h-8 bg-brand-gray-300 rounded-full absolute top-2 right-2">
                     <svg
@@ -258,7 +275,7 @@ export default function Products() {
                 {/* Product Title */}
 
                 <Link
-                  href="/"
+                  href={`/products/${product.slug}`}
                   className="text-sm font-bold mb-2 cursor-pointer text-brand-slate-800"
                 >
                   {product.title}
@@ -270,11 +287,15 @@ export default function Products() {
                   <span>تومان</span>
                 </div>
 
-                <hr className="text-brand-gray-300-30 mb-2" />
+                <div className="mt-auto">
+                  <hr className="text-brand-gray-300-30 mb-2" />
+                  <button className="text-brand-orange-400 font-bold w-full cursor-pointer">
+                    <Link href={`/products/${product.slug}`}>
+                افزودن به سبد خرید
+                    </Link>
+                  </button>
+                </div>
 
-                <button className="text-brand-orange-400 font-bold w-full cursor-pointer">
-                  <Link href="/">مشاهده و سفارش</Link>
-                </button>
               </div>
             ))}
           </div>

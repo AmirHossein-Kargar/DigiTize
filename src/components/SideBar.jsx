@@ -1,7 +1,8 @@
-import Image from "next/image";
+"use client"
 import React, { useState } from "react";
-import CategoryList from "./CategoryList";
+import CategoryList, { CategoryIcon } from "./CategoryList";
 import AccordionItem from "./Accordion";
+import Link from "next/link";
 
 const categories = [
   {
@@ -9,7 +10,7 @@ const categories = [
     name: "گوشی موبایل",
     alt: "phone",
     path: "/images/categories/phone.svg",
-    key: "phone", // key انگلیسی برای فیلتر
+    key: "phone",
   },
   {
     id: 2,
@@ -72,6 +73,14 @@ const moreCategories = [
   },
 ];
 
+
+const filters = [
+  { id: 1, name: "برند محصول", icon: "/images/categories/brand.svg", alt: "brand", href: "/" },
+  { id: 2, name: "رنگ محصول", icon: "/images/categories/color.svg", alt: "color", href: "/" },
+  { id: 3, name: "محدوده قیمت", icon: "/images/categories/price.svg", alt: "color", href: "/" },
+];
+
+
 export default function SideBar() {
   const [allCategories, setAllCategories] = useState(categories);
 
@@ -90,13 +99,23 @@ export default function SideBar() {
           نمایش دسته‌بندی‌های بیشتر
         </div>
       </AccordionItem>
-      <hr className="text-brand-stone-100" />
+      <hr className="text-brand-gray-200" />
 
-      <div className="flex flex-col mt-2.5">
-        <div>
-          <h2 className="text-brand-orange-400 font-bold text-lg">فیلتر</h2>
-        </div>
-      </div>
+      <div className="flex flex-col gap-6 mb-5">
+  <h2 className="text-brand-orange-400 font-bold text-lg mt-4">فیلتر</h2>
+
+  <ul className="flex flex-col gap-6 cursor-pointer text-brand-gray-300">
+    {filters.map((filter) => (
+      <li key={filter.id} className="flex justify-between items-center hover-primary cursor-pointer">
+        <CategoryIcon src={filter.icon} alt={filter.alt} />
+        <Link href={filter.href}>{filter.name}</Link>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </li>
+    ))}
+  </ul>
+</div>
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function AccordionItem({ children, onToggle }) {
     <div className="mb-2">
       <button
         onClick={handleClick}
-        className="w-full flex justify-center items-center p-2 cursor-pointer hover-button"
+        className="w-full flex justify-center items-center p-2 cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

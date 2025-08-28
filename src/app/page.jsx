@@ -5,10 +5,10 @@ import Products from "@/components/Products";
 
 export default function Page() {
   return (
-    <>
+    <div className="px-4">
       <Header />
       <Filters />
       <Products />
-    </>
+    </div>
   );
 }

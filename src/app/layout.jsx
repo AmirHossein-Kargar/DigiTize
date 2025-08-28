@@ -20,9 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body>
+      <body className="bg-brand-stone-100">
         <Navbar />
-        <main className="bg-brand-stone-100 px-4">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

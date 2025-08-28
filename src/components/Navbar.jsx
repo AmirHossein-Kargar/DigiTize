@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="hidden md:flex mx-auto px-4 lg:px-6 xl:px-12 py-3 items-center justify-between w-full max-w-[1400px]">
         {/* Logo */}
         <Logo width={80} height={50} />

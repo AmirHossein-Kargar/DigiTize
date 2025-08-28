@@ -38,7 +38,7 @@ export default function Products() {
     <>
       <main className="flex flex-col md:flex-row gap-4 p-4">
         {/* Sidebar */}
-        <aside className="hidden md:block w-[215px] space-y-4">
+        <aside className="hidden shadow-lg md:block w-[215px] space-y-4">
           <div className="bg-white p-4 rounded-lg">
             <SideBar />
           </div>
@@ -73,8 +73,8 @@ export default function Products() {
                   itemType="http://schema.org/Product"
                 >
                   {/* Product Image */}
-                  <figure className="relative bg-brand-slate-200 w-full rounded-xl h-36 flex justify-center items-center mb-5">
-                    <div className="relative w-full h-28">
+                  <figure className="relative bg-brand-slate-200 rounded-xl h-36 flex justify-center items-center mb-5">
+                    <div className="relative w-full h-full">
                       <Link href={`/products/${product.slug}`}>
                         <Image
                           src={product.src}

@@ -24,10 +24,26 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4 lg:gap-6 xl:gap-8 flex-shrink-0">
-          <input
-            placeholder="جستجو..."
-            className="text-sm w-48 lg:w-64 xl:w-80 bg-brand-stone-100 border border-transparent shadow-lg focus:outline-none focus:border-brand-slate-700 px-3 lg:px-4 py-2 rounded-md"
-          />
+          <div className="relative w-fit">
+            <label
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+              htmlFor="searchicon"
+            >
+              <Image
+                src="/images/search.svg"
+                width={20}
+                height={20}
+                alt="search"
+              />
+            </label>
+
+            <input
+              id="searchicon"
+              placeholder="جستجو..."
+              className="text-sm w-48 lg:w-64 xl:w-80 bg-brand-stone-100 border border-transparent shadow-lg focus:outline-none focus:border-brand-slate-700 pr-12 py-2 rounded-md"
+            />
+          </div>
+
           <div className="whitespace-nowrap">
             <Link
               href="/signup"

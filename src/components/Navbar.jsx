@@ -5,9 +5,11 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm">
-      <div className="hidden md:flex mx-auto px-4 lg:px-6 xl:px-8 py-3 items-center justify-between max-w-6xl">
+      <div className="hidden md:flex mx-auto px-4 lg:px-6 xl:px-12 py-3 items-center justify-between w-full max-w-[1400px]">
+        {/* Logo */}
         <Logo width={80} height={50} />
 
+        {/* Menu */}
         <ul className="flex gap-4 lg:gap-6 xl:gap-8 text-brand-slate-800 hover-primary font-bold text-xs lg:text-sm xl:text-base flex-shrink-0">
           <li className="hover:text-brand-slate-900 whitespace-nowrap">
             <Link href="/">خانه</Link>
@@ -23,7 +25,9 @@ export default function Navbar() {
           </li>
         </ul>
 
+        {/* Search & User */}
         <div className="flex items-center gap-4 lg:gap-6 xl:gap-8 flex-shrink-0">
+          {/* Search box */}
           <div className="relative w-fit">
             <label
               className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
@@ -36,7 +40,6 @@ export default function Navbar() {
                 alt="search"
               />
             </label>
-
             <input
               id="searchicon"
               placeholder="جستجو..."
@@ -44,15 +47,14 @@ export default function Navbar() {
             />
           </div>
 
-          <div className="whitespace-nowrap">
+          {/* Login + Cart */}
+          <div className="flex items-center gap-3 lg:gap-5">
             <Link
               href="/signup"
-              className="text-brand-slate-800 hover:text-slate-900 text-xs lg:text-sm xl:text-base"
+              className="text-brand-slate-800 hover:text-slate-900 text-xs lg:text-sm xl:text-base whitespace-nowrap"
             >
               ورود / ثبت نام
             </Link>
-          </div>
-          <div>
             <Link href="/">
               <Image
                 src="/images/cart.svg"

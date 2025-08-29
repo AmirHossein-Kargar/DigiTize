@@ -7,7 +7,7 @@ export const PRODUCTS = [
     brand: "Apple",
     slug: "apple-watch-series-6",
     price: 48250000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/AppleWatch.png",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const PRODUCTS = [
     brand: "Apple",
     slug: "airpods-pro-2",
     price: 16500000,
-    src: "/images/Cart/airpodspro2.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/airpodspro2.png",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export const PRODUCTS = [
     brand: "Samsung",
     slug: "samsung-galaxy-s23",
     price: 39800000,
-    src: "/images/Cart/S23.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/S23.png",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const PRODUCTS = [
     brand: "Dell",
     slug: "dell-xps-13",
     price: 62400000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/Asus-Rog.png",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const PRODUCTS = [
     brand: "Xiaomi",
     slug: "xiaomi-redmi-buds-5",
     price: 2950000,
-    src: "/images/Cart/RedmiBuds.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/RedmiBuds.png",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const PRODUCTS = [
     brand: "LG",
     slug: "lg-monitor-27-inch",
     price: 18700000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/Asus-Rog.png",
   },
   {
     id: 7,
@@ -67,18 +67,17 @@ export const PRODUCTS = [
     brand: "Apple",
     slug: "ipad-pro-12-9",
     price: 75000000,
-    src: "/images/Cart/AppleWatch.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/AppleWatch.png",
   },
- 
   {
     id: 8,
-  title: "آیفون 14 پرو مکس",
-  category: "phone",
-  categoryLabel: "گوشی موبایل",
-  brand: "Apple",
-  slug: "iphone-14-pro-max",
-  price: 65676000,
-  src: "/images/Cart/iPhone14ProMax.png",
+    title: "آیفون 14 پرو مکس",
+    category: "phone",
+    categoryLabel: "گوشی موبایل",
+    brand: "Apple",
+    slug: "iphone-14-pro-max",
+    price: 65676000,
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/iPhone14ProMax.png",
   },
   {
     id: 9,
@@ -88,7 +87,7 @@ export const PRODUCTS = [
     brand: "Apple",
     slug: "apple-macbook-pro-13",
     price: 85000000,
-    src: "/images/Cart/macbook13.png",
+    src: "https://zwqaxusdfegwvfpokmhy.supabase.co/storage/v1/object/public/Product%20Images/macbook13.png",
   },
 ];
 

@@ -1,10 +1,11 @@
 "use client";
+import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SortButtons } from "./SortButtons";
 import SideBar from "./SideBar";
-import { PRODUCTS } from "@/constants/data";
+// import { PRODUCTS } from "@/constants/data";
 
 const colorOptions = ["bg-red-400", "bg-blue-400", "bg-green-400"];
 
@@ -12,7 +13,18 @@ const formatter = new Intl.NumberFormat("fa-IR");
 
 export default function Products() {
   const [selectedColor, setSelectedColor] = useState({});
-  const [displayProducts, setDisplayProducts] = useState(PRODUCTS);
+  const [displayProducts, setDisplayProducts] = useState([]);
+
+useEffect(() => {
+  const fetchProducts = async () => {
+    const { data, error } = await supabase.from("products").select("*");
+    console.log("Fetched Data:", data);
+    console.log("Error:", error);
+    setDisplayProducts(data ?? []);
+  };
+  fetchProducts();
+}, []);
+
 
   // * product status
   const [cart, setCart] = useState([]);

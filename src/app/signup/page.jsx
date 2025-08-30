@@ -1,9 +1,44 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Logo from "@/components/Logo";
 import Input from "@/components/ui/Input";
 import Button from "@/components/Button";
+import { supabase } from "@/lib/supabaseClient";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const [loading, setLoading] = useState(false);
+
+
+const handleSignUp = async (e) => {
+  e.preventDefault()
+    setLoading(true);
+
+console.log({ email, password, firstName, lastName });
+
+    const {data, error} = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            first_name: firstName,
+            last_name: lastName,
+          }
+        }
+    })
+    if(error) {
+      toast.error(error.message);
+    } else {
+      toast.success("ثبت نام با موفقیت انجام شد! لطفا ایمیل خود را برای تایید بررسی کنید.");
+    }
+    setLoading(false)
+}
+
   return (
     <div className="min-h-[calc(100vh-4rem-2rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md">
@@ -20,19 +55,38 @@ export default function SignUp() {
             </p>
           </div>
 
-          <form className="space-y-6" action="#">
+          <form className="space-y-6" action="#" onSubmit={handleSignUp}>
             <div>
               <label
-                htmlFor="fullName"
+                htmlFor="firstName"
                 className="block mb-2 text-sm font-medium text-brand-slate-700"
               >
-                نام و نام خانوادگی
+                نام
               </label>
               <Input
                 type="text"
-                name="fullName"
-                id="fullName"
-                placeholder="نام و نام خانوادگی خود را وارد کنید"
+                name="firstName"
+                id="firstName"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="نام خود را وارد کنید"
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="lastName"
+                className="block mb-2 text-sm font-medium text-brand-slate-700"
+              >
+                نام خانوادگی
+              </label>
+              <Input
+                type="text"
+                name="lastName"
+                id="lastName"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="نام خانوادگی خود را وارد کنید"
                 required
               />
             </div>
@@ -48,12 +102,15 @@ export default function SignUp() {
                 type="email"
                 name="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="example@email.com"
                 required
               />
             </div>
 
-            <div>
+            {/* Phone Number KYC disabled */}
+            {/* <div>
               <label
                 htmlFor="phone"
                 className="block mb-2 text-sm font-medium text-brand-slate-700"
@@ -67,7 +124,7 @@ export default function SignUp() {
                 placeholder="09xxxxxxxxx"
                 required
               />
-            </div>
+            </div> */}
 
             <div>
               <label
@@ -80,6 +137,8 @@ export default function SignUp() {
                 type="password"
                 name="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
               />
@@ -128,8 +187,8 @@ export default function SignUp() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full text-sm">
-              ثبت نام
+            <Button type="submit" className="w-full text-sm" disabled={loading}>
+              {loading ? "در حال ثبت نام..." : "ثبت نام"}
             </Button>
 
             <p className="text-sm font-light text-brand-slate-700 text-center">

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "DigiTize - فروشگاه آنلاین محصولات دیجیتال",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body className="bg-brand-stone-100">
         <Navbar />
         <main>{children}</main>
+        <Toaster reverseOrder={false} />
       </body>
     </html>
   );

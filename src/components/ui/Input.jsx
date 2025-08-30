@@ -1,12 +1,14 @@
 import React from "react";
 
-export default function Input({ type, name, id, placeholder, required }) {
+export default function Input({ type, name, id, placeholder, required, value, onChange }) {
   return (
     <input
       type={type}
       name={name}
       id={id}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
       className="text-sm w-full bg-brand-stone-100 border border-transparent shadow-lg focus:outline-none focus:border-brand-slate-700 px-4 py-3 rounded-md"
       required={required}
     />

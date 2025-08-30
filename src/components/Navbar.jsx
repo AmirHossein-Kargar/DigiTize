@@ -50,7 +50,7 @@ export default function Navbar() {
           {/* Login + Cart */}
           <div className="flex items-center gap-3 lg:gap-5">
             <Link
-              href="/signup"
+              href="/signUp"
               className="text-brand-slate-800 hover:text-slate-900 text-xs lg:text-sm xl:text-base whitespace-nowrap"
             >
               ورود / ثبت نام

@@ -5,6 +5,8 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/Button";
 import { supabase } from "@/lib/supabaseClient";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -14,27 +16,30 @@ export default function SignUp() {
   
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
+
+  
 
 const handleSignUp = async (e) => {
   e.preventDefault()
-    setLoading(true);
-
-console.log({ email, password, firstName, lastName });
-
-    const {data, error} = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            first_name: firstName,
-            last_name: lastName,
-          }
-        }
-    })
-    if(error) {
-      toast.error(error.message);
-    } else {
-      toast.success("ثبت نام با موفقیت انجام شد! لطفا ایمیل خود را برای تایید بررسی کنید.");
+  setLoading(true);
+  
+  
+  const {data, error} = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        first_name: firstName,
+        last_name: lastName,
+      }
+    }
+  })
+  if(error) {
+    toast.error(error.message);
+  } else {
+    toast.success("ثبت نام با موفقیت انجام شد!.");
+    router.push('/signup-complete');
     }
     setLoading(false)
 }
